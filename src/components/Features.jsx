@@ -135,7 +135,7 @@ function FeatureRow({ feature, index }) {
         className={`relative flex items-center justify-center p-8 md:p-12 lg:p-16 min-h-[400px] lg:min-h-[500px] ${isEven ? 'lg:order-2' : 'lg:order-1'} bg-surface/30`}
       >
         {/* Background glow */}
-        <div className={`absolute inset-0 ${colors.glow} opacity-30 blur-3xl`} />
+        <div className={`absolute inset-0 ${colors.glow} opacity-30 blur-3xl will-change-transform`} />
 
         {/* Visual component */}
         <div className="relative z-10 w-full max-w-xl">
@@ -180,7 +180,7 @@ export default function Features() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="border border-border rounded-3xl overflow-hidden bg-void/60 backdrop-blur-sm"
+          className="border border-border rounded-3xl overflow-hidden bg-void/60"
         >
           {features.map((feature, i) => (
             <FeatureRow key={feature.id} feature={feature} index={i} />
@@ -205,7 +205,7 @@ function FeatureContext({ isInView }) {
           {/* Header */}
           <div className="p-5 border-b border-border">
             <div className="flex items-center gap-4">
-              <img src={salesforceLogo} alt="Salesforce" className="h-10 w-auto object-contain" />
+              <img src={salesforceLogo} alt="Salesforce" className="h-10 w-auto object-contain" loading="lazy" />
               <div className="flex-1">
                 <div className="font-semibold text-text text-base">Salesforce</div>
                 <div className="text-sm text-text-muted">Enterprise Account</div>
@@ -263,8 +263,7 @@ function FeatureContext({ isInView }) {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={isInView ? { opacity: 1, scale: 1 } : {}}
                   transition={{ delay: 0.7 + i * 0.1 }}
-                  whileHover={{ scale: 1.03, y: -2 }}
-                  className="bg-surface rounded-xl p-3 border border-border hover:border-nixo/30 transition-all cursor-default"
+                  className="bg-surface rounded-xl p-3 border border-border hover:border-nixo/30 hover:scale-[1.03] hover:-translate-y-0.5 transition-all cursor-default"
                 >
                   <div className="text-xs text-text-muted mb-1">{tech.icon} {tech.label}</div>
                   <div className="text-sm text-text font-medium">{tech.value}</div>
@@ -293,8 +292,7 @@ function FeatureAttention({ isInView }) {
           initial={{ opacity: 0, x: 30 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ delay: 0.3 + i * 0.15, type: 'spring', stiffness: 80 }}
-          whileHover={{ scale: 1.02, x: 8 }}
-          className={`card-glass p-5 rounded-xl border transition-all cursor-default ${
+          className={`card-glass p-5 rounded-xl border transition-all cursor-default hover:scale-[1.02] hover:translate-x-2 ${
             i === 0 ? 'border-red-500/40 bg-red-500/5 shadow-lg shadow-red-500/10' : 'border-border'
           }`}
         >
@@ -310,7 +308,7 @@ function FeatureAttention({ isInView }) {
             <div className="flex-1 min-w-0">
               <div className="flex items-center justify-between mb-1">
                 <span className="text-base font-semibold text-text">{ticket.company}</span>
-                <img src={slackLogo} alt="Slack" className="w-5 h-5 object-contain opacity-60" />
+                <img src={slackLogo} alt="Slack" className="w-5 h-5 object-contain opacity-60" loading="lazy" />
               </div>
               <div className="text-sm text-text-muted mb-2">{ticket.person}</div>
               <p className="text-sm text-text-secondary mb-3">{ticket.msg}</p>
@@ -379,6 +377,7 @@ function FeatureIntake({ isInView }) {
                   src={m.type === 'bot' ? avatars.nixo : avatars.richard}
                   alt=""
                   className="w-8 h-8 rounded-full bg-surface flex-shrink-0"
+                  loading="lazy"
                 />
                 <div className={`flex-1 ${m.type === 'bot' ? '' : 'text-right'}`}>
                   <div className={`flex items-center gap-2 mb-1.5 ${m.type === 'bot' ? '' : 'justify-end'}`}>
@@ -415,7 +414,7 @@ function FeatureDuplicate({ isInView }) {
         className="card-glass p-5 rounded-xl border border-border"
       >
         <div className="flex items-start gap-4">
-          <img src={linearLogo} alt="Linear" className="w-6 h-6 object-contain dark-invert flex-shrink-0 mt-0.5" />
+          <img src={linearLogo} alt="Linear" className="w-6 h-6 object-contain dark-invert flex-shrink-0 mt-0.5" loading="lazy" />
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
               <span className="text-xs font-mono text-text-muted">NIX-45</span>
@@ -445,7 +444,7 @@ function FeatureDuplicate({ isInView }) {
         className="card-glass p-5 rounded-xl border border-electric/40 bg-electric/5"
       >
         <div className="flex items-start gap-4">
-          <img src={githubLogo} alt="GitHub" className="w-6 h-6 object-contain dark-invert flex-shrink-0 mt-0.5" />
+          <img src={githubLogo} alt="GitHub" className="w-6 h-6 object-contain dark-invert flex-shrink-0 mt-0.5" loading="lazy" />
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1">
               <GitPullRequest className="w-4 h-4 text-emerald" />
@@ -522,15 +521,13 @@ function FeatureStart80({ isInView }) {
                 initial={{ opacity: 0, x: 25 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.4 + i * 0.15 }}
-                whileHover={{ backgroundColor: 'rgba(255,255,255,0.03)' }}
-                className="p-5 flex items-center gap-5 cursor-default transition-colors"
+                className="p-5 flex items-center gap-5 cursor-default transition-colors hover:bg-white/[0.03]"
               >
-                <motion.div
-                  whileHover={{ rotate: 10, scale: 1.1 }}
-                  className="w-12 h-12 rounded-xl bg-amber/10 flex items-center justify-center flex-shrink-0"
+                <div
+                  className="w-12 h-12 rounded-xl bg-amber/10 flex items-center justify-center flex-shrink-0 transition-transform hover:rotate-[10deg] hover:scale-110"
                 >
                   <FileCode className="w-6 h-6 text-amber" />
-                </motion.div>
+                </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-xs font-mono text-nixo-light">{item.id}</span>

@@ -85,7 +85,7 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 60, scale: 0.95 }}
             whileInView={{ opacity: 1, y: 0, scale: 1 }}
-            viewport={{ margin: '-100px' }}
+            viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="relative w-full mx-auto"
           >
@@ -99,7 +99,7 @@ export default function Hero() {
                   <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ margin: '-50px' }}
+                    viewport={{ once: true, margin: '-50px' }}
                     transition={{ duration: 0.6, delay: 0.3 }}
                     className="flex items-center justify-between px-6 pt-6 pb-4"
                   >
@@ -117,7 +117,7 @@ export default function Hero() {
                     <motion.div
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
-                      viewport={{ margin: '-50px' }}
+                      viewport={{ once: true, margin: '-50px' }}
                       transition={{ delay: 0.4 }}
                       className="flex items-center gap-2 mb-4"
                     >
@@ -151,7 +151,7 @@ export default function Hero() {
                 <motion.div
                   initial={{ opacity: 0, scaleY: 0 }}
                   whileInView={{ opacity: 1, scaleY: 1 }}
-                  viewport={{ margin: '-50px' }}
+                  viewport={{ once: true, margin: '-50px' }}
                   transition={{ duration: 0.5, delay: 0.6 }}
                   className="hidden xl:flex flex-shrink-0 items-stretch px-5 origin-top"
                 >
@@ -162,7 +162,7 @@ export default function Hero() {
                 <motion.div
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ margin: '-50px' }}
+                  viewport={{ once: true, margin: '-50px' }}
                   transition={{ duration: 0.7, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
                   className="hidden xl:flex flex-col w-60 flex-shrink-0 bg-surface/30 py-5 px-5"
                 >
@@ -254,7 +254,7 @@ function FireItem({ company, title, person, avatar, time, tag, tagColor, note, n
     <motion.div
       initial={{ opacity: 0, x: -30 }}
       whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ margin: '-30px' }}
+      viewport={{ once: true, margin: '-30px' }}
       transition={{ delay, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       className="py-3.5"
     >
@@ -265,7 +265,7 @@ function FireItem({ company, title, person, avatar, time, tag, tagColor, note, n
             <span className="text-xs text-text-secondary truncate">{title}</span>
           </div>
           <div className="flex items-center gap-2">
-            <img src={avatar} alt={person} className="w-4 h-4 rounded-full bg-surface" />
+            <img src={avatar} alt={person} className="w-4 h-4 rounded-full bg-surface" loading="lazy" />
             <span className="text-[10px] text-text-muted">{person}</span>
             <span className="text-[10px] text-text-faded">· {time}</span>
           </div>
@@ -273,7 +273,7 @@ function FireItem({ company, title, person, avatar, time, tag, tagColor, note, n
         <motion.span
           initial={{ opacity: 0, scale: 0.5 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ margin: '-30px' }}
+          viewport={{ once: true, margin: '-30px' }}
           transition={{ delay: delay + 0.15, duration: 0.3, type: 'spring', stiffness: 300 }}
           className={`text-[10px] font-medium px-2 py-0.5 rounded-full flex-shrink-0 ${tagClasses[tagColor]}`}
         >
@@ -284,11 +284,11 @@ function FireItem({ company, title, person, avatar, time, tag, tagColor, note, n
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
-          viewport={{ margin: '-30px' }}
+          viewport={{ once: true, margin: '-30px' }}
           transition={{ delay: delay + 0.25, duration: 0.4 }}
           className="flex items-center gap-2 mt-2 ml-0.5"
         >
-          {noteAvatar && <img src={noteAvatar} alt="" className="w-3.5 h-3.5 rounded-full bg-surface" />}
+          {noteAvatar && <img src={noteAvatar} alt="" className="w-3.5 h-3.5 rounded-full bg-surface" loading="lazy" />}
           {!noteAvatar && <div className="w-3.5 h-3.5 rounded-full bg-nixo/20 flex items-center justify-center"><span className="text-[7px] text-nixo font-bold">Y</span></div>}
           <span className="text-[10px] text-text-muted italic">{note}</span>
         </motion.div>
@@ -309,11 +309,11 @@ function WorkloadBar({ name, avatar, count, pct, color, delay = 0.6 }) {
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ margin: '-30px' }}
+      viewport={{ once: true, margin: '-30px' }}
       transition={{ delay, duration: 0.4 }}
     >
       <div className="flex items-center gap-2 mb-1">
-        <img src={avatar} alt={name} className="w-4 h-4 rounded-full bg-surface" />
+        <img src={avatar} alt={name} className="w-4 h-4 rounded-full bg-surface" loading="lazy" />
         <span className="text-[10px] text-text flex-1 truncate">{name}</span>
         <span className="text-[10px] text-text-muted">{count} active</span>
       </div>
@@ -321,7 +321,7 @@ function WorkloadBar({ name, avatar, count, pct, color, delay = 0.6 }) {
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: `${pct}%` }}
-          viewport={{ margin: '-30px' }}
+          viewport={{ once: true, margin: '-30px' }}
           transition={{ duration: 1, delay: delay + 0.2, ease: [0.16, 1, 0.3, 1] }}
           className={`h-full rounded-full ${barColors[color]}`}
         />
@@ -340,7 +340,7 @@ function CriticalAccount({ name, detail, badge, badgeColor, delay = 0 }) {
     <motion.div
       initial={{ opacity: 0, y: 8 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ margin: '-30px' }}
+      viewport={{ once: true, margin: '-30px' }}
       transition={{ delay, duration: 0.4 }}
       className="bg-surface/60 rounded-lg px-3 py-2"
     >

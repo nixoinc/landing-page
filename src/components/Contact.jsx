@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles } from 'lucide-react';
 import Cal from '@calcom/embed-react';
@@ -29,6 +29,24 @@ function useResolvedTheme() {
 
 export default function Contact() {
   const resolvedTheme = useResolvedTheme();
+  const calRef = useRef(null);
+  const [calVisible, setCalVisible] = useState(false);
+
+  useEffect(() => {
+    const el = calRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCalVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="contact" className="relative pt-16 pb-12 px-6 overflow-hidden">
@@ -58,20 +76,22 @@ export default function Contact() {
         </p>
 
         {/* Cal.com Inline Embed */}
-        <div className="cal-embed-container mb-8">
-          <Cal
-            key={resolvedTheme}
-            calLink="priya-nixo/15min"
-            style={{
-              width: "100%",
-              height: "100%",
-              overflow: "scroll"
-            }}
-            config={{
-              layout: "month_view",
-              theme: resolvedTheme,
-            }}
-          />
+        <div ref={calRef} className="cal-embed-container mb-8">
+          {calVisible && (
+            <Cal
+              key={resolvedTheme}
+              calLink="priya-nixo/15min"
+              style={{
+                width: "100%",
+                height: "100%",
+                overflow: "scroll"
+              }}
+              config={{
+                layout: "month_view",
+                theme: resolvedTheme,
+              }}
+            />
+          )}
         </div>
 
         {/* Contact info */}

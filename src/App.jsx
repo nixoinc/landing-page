@@ -1,14 +1,15 @@
-import { useEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Lenis from 'lenis';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Plasma from './components/Plasma';
-import Home from './pages/Home';
-import FDEWiki from './pages/FDEWiki';
-import ForCandidates from './pages/ForCandidates';
-import PartnerProgram from './pages/PartnerProgram';
-import ForEmployers from './pages/ForEmployers';
+
+const Home = lazy(() => import('./pages/Home'));
+const FDEWiki = lazy(() => import('./pages/FDEWiki'));
+const ForCandidates = lazy(() => import('./pages/ForCandidates'));
+const PartnerProgram = lazy(() => import('./pages/PartnerProgram'));
+const ForEmployers = lazy(() => import('./pages/ForEmployers'));
 
 // Hook to detect current theme
 function useTheme() {
@@ -93,13 +94,15 @@ export default function App() {
         <div className="relative z-10">
           <Header />
           <main>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/fde-wiki" element={<FDEWiki />} />
-              <Route path="/for-candidates" element={<ForCandidates />} />
-              <Route path="/partner-program" element={<PartnerProgram />} />
-              <Route path="/for-employers" element={<ForEmployers />} />
-            </Routes>
+            <Suspense fallback={null}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/fde-wiki" element={<FDEWiki />} />
+                <Route path="/for-candidates" element={<ForCandidates />} />
+                <Route path="/partner-program" element={<PartnerProgram />} />
+                <Route path="/for-employers" element={<ForEmployers />} />
+              </Routes>
+            </Suspense>
           </main>
           <Footer />
         </div>
