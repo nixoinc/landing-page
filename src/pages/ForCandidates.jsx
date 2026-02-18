@@ -51,7 +51,7 @@ export default function ForCandidates() {
               The best FDE teams trust Nixo to find exceptional talent. If you're interested in forward deployed engineering, we're excited to help you get there.
             </p>
             <motion.a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSfikR5gnl-GYDl3jsWO7gy17RMB9I05fv6_IYuRWbDhpTDeEA/viewform"
+              href="https://airtable.com/appSZPPGxnW4I5YV1/pagWUx7jeZDjKshyN/form"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
@@ -149,7 +149,7 @@ export default function ForCandidates() {
                 Join the best forward deployed engineers working at top AI companies.
               </p>
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSfikR5gnl-GYDl3jsWO7gy17RMB9I05fv6_IYuRWbDhpTDeEA/viewform"
+                href="https://airtable.com/appSZPPGxnW4I5YV1/pagWUx7jeZDjKshyN/form"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary inline-flex"
