@@ -141,7 +141,7 @@ export default function Header() {
         { href: '/partner-program', label: 'Partner Program' },
       ],
     },
-    { href: '/fde-wiki', label: 'FDE Wiki', isRoute: true },
+    { href: '/fde-wiki', label: 'FDE HQ', isRoute: true },
     { href: '#contact', label: 'Contact' },
   ];
 
