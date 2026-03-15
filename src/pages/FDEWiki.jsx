@@ -214,8 +214,8 @@ const friendsData = [
     company: 'Lleverage',
     bio: 'Milos Mandic is an FDE at Lleverage, an EU-based AI automation company. He runs FDE Club, a blog and podcast dedicated to FDE content.',
     linkedin: 'https://www.linkedin.com/in/mandicm/',
-    website: '#',
-    avatar: 'https://media.licdn.com/dms/image/v2/D4D03AQEclApcNNkQYw/profile-displayphoto-crop_800_800/B4DZk9QbeAJYAQ-/0/1757669341448?e=1774483200&v=beta&t=YfZKLPhBIsaCaYMu_Fex4Ffa5j3coN6WqpuS1EV8z_k',
+    website: 'https://www.fdehub.org/',
+    avatar: '/images/milos.jpg',
     initials: 'MM',
   },
   {
@@ -223,7 +223,7 @@ const friendsData = [
     company: 'Nixo',
     bio: "Priya Kandelwal is the founder of Nixo and a Stanford CS and YC alumni. She's active on LinkedIn, making frequent posts about the trajectory of FDE.",
     linkedin: 'https://www.linkedin.com/in/priya-khandelwal-86b84018b/',
-    avatar: 'https://media.licdn.com/dms/image/v2/D5603AQEuJXBTkj-XeA/profile-displayphoto-crop_800_800/B56ZitD7.1G4AI-/0/1755250149713?e=1774483200&v=beta&t=Gx4DQV14mwI0UdVm81Q84itSq7ikVoQXYD4L359giPU',
+    avatar: '/images/priya.png',
     initials: 'PK',
   },
   {
@@ -231,7 +231,7 @@ const friendsData = [
     company: 'Rippling',
     bio: 'Kevin Bai is a founding FDE at Rippling. He makes frequent posts about FDE and is an avid speaker at FDE events.',
     linkedin: 'https://www.linkedin.com/in/zkevinbai/',
-    avatar: 'https://media.licdn.com/dms/image/v2/D5603AQHIATxZHaQHkw/profile-displayphoto-shrink_800_800/B56ZYWubqQHEAc-/0/1744137993242?e=1774483200&v=beta&t=uVxcsdv1JTlWe1AB2flZoGNOFwmVQyGiIw15xymvCsA',
+    avatar: '/images/kevin.jpg',
     initials: 'KB',
   },
 ];
