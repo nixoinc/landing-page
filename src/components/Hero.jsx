@@ -44,9 +44,9 @@ export default function Hero() {
 
           {/* Main Headline */}
           <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] font-display font-bold tracking-tight mb-8 leading-[1.05]">
-            <span className="text-text">The ops platform for</span>
+            <span className="text-text">The operating layer for</span>
             <br />
-            <span className="gradient-text-nixo">forward deployed engineers</span>
+            <span className="gradient-text-nixo">forward deployed teams</span>
           </h1>
 
           {/* Subheadline */}
