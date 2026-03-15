@@ -243,7 +243,7 @@ const mediaData = [
     title: 'Fondo podcast with Priya Khandelwal',
     source: 'Fondo',
     date: '2/14/26',
-    url: '#',
+    url: 'https://www.linkedin.com/posts/fondohq_in-saas-products-worked-out-of-the-box-activity-7437296507352944640-vNh2/?utm_source=share&utm_medium=member_ios&rcm=ACoAACzL2NMBS6yeXm0UspqwP37NB_B24LXZ__M',
   },
   {
     title: 'New grads make great FDEs \u2013 Priya Khandelwal by Milos Mandic',
