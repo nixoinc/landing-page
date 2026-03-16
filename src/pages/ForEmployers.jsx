@@ -1,33 +1,6 @@
 import { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Building2, Check, Star, Mail, CalendarCheck } from 'lucide-react';
-
-const tiers = [
-  {
-    name: 'Lightweight',
-    description: 'Curated list of up to 5 relevant candidates from the Nixo network',
-    originalPrice: '$2,500',
-    price: '$1,000',
-    successFee: '+ 10% success fee per hire',
-    popular: false,
-  },
-  {
-    name: 'Pipeline',
-    description: 'Detailed profiles or warm intros for 20-25 handpicked candidates',
-    originalPrice: '$5,500',
-    price: '$2,000',
-    successFee: '+ 10% success fee per hire',
-    popular: true,
-  },
-  {
-    name: 'Custom',
-    description: 'High-touch sourcing for 30+ candidates, shown to you first',
-    originalPrice: '$8,500',
-    price: '$5,000',
-    successFee: '+ 15% success fee per hire',
-    popular: false,
-  },
-];
+import { ArrowRight, Building2, Mail, CalendarCheck } from 'lucide-react';
 
 export default function ForEmployers() {
   useEffect(() => {
@@ -67,74 +40,34 @@ export default function ForEmployers() {
         </div>
       </section>
 
-      {/* Pricing */}
+      {/* Contact Us */}
       <section className="px-6 pb-20">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center"
           >
             <h2 className="text-3xl md:text-4xl font-display font-bold text-text mb-4">
               Tell us what you're looking for.
               <br />
               <span className="text-text-secondary">We'll surface the right people.</span>
             </h2>
+            <p className="text-text-secondary mb-8">
+              Book a call and we'll tailor a plan to your hiring needs.
+            </p>
+            <a
+              href="https://cal.com/priya-nixo/hiring-hub"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary inline-flex"
+            >
+              <CalendarCheck className="w-4 h-4" />
+              Contact Us
+              <ArrowRight className="w-4 h-4" />
+            </a>
           </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {tiers.map((tier, i) => (
-              <motion.div
-                key={tier.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
-                className={`relative card p-6 flex flex-col ${
-                  tier.popular ? 'border-nixo/40 shadow-lg shadow-nixo/10' : ''
-                }`}
-              >
-                {tier.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="inline-flex items-center gap-1 bg-nixo text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-full">
-                      <Star className="w-3 h-3" />
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-
-                <div className="text-center mb-6 pt-2">
-                  <h3 className="text-lg font-display font-bold text-text mb-3">{tier.name}</h3>
-                  <p className="text-sm text-text-secondary leading-relaxed min-h-[48px]">
-                    {tier.description}
-                  </p>
-                </div>
-
-                <div className="text-center mb-4 mt-auto">
-                  <div className="flex items-center justify-center gap-2 mb-1">
-                    <span className="text-text-faded line-through text-sm">{tier.originalPrice}</span>
-                    <span className="text-3xl font-display font-bold text-nixo">{tier.price}</span>
-                  </div>
-                  <p className="text-xs text-text-muted">{tier.successFee}</p>
-                </div>
-
-                <a
-                  href="https://cal.com/priya-nixo/hiring-hub"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`mt-4 inline-flex items-center justify-center gap-2 w-full py-3 rounded-xl text-sm font-medium transition-colors ${
-                    tier.popular
-                      ? 'bg-nixo hover:bg-nixo-light text-white'
-                      : 'bg-surface-elevated hover:bg-surface-hover text-text border border-border'
-                  }`}
-                >
-                  Get Started
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </a>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
