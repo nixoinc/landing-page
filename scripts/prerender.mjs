@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
 import { createServer } from 'http';
 import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'fs';
 import { join, extname } from 'path';
@@ -46,11 +46,26 @@ const server = createServer((req, res) => {
   res.end(readFileSync(join(DIST, 'index.html')));
 });
 
-async function prerender() {
-  server.listen(PORT);
-  console.log(`Static server running on http://localhost:${PORT}`);
+async function launchBrowser() {
+  // On Vercel/CI: use @sparticuz/chromium (bundles its own libs)
+  if (process.env.VERCEL || process.env.CI) {
+    const chromium = (await import('@sparticuz/chromium')).default;
+    return puppeteer.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: 'shell',
+    });
+  }
 
-  const browser = await puppeteer.launch({
+  // Local dev: use system Chrome
+  const chromePaths = {
+    darwin: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+    linux: '/usr/bin/google-chrome',
+    win32: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+  };
+
+  return puppeteer.launch({
+    executablePath: chromePaths[process.platform],
     headless: true,
     args: [
       '--no-sandbox',
@@ -59,6 +74,13 @@ async function prerender() {
       '--disable-gpu',
     ],
   });
+}
+
+async function prerender() {
+  server.listen(PORT);
+  console.log(`Static server running on http://localhost:${PORT}`);
+
+  const browser = await launchBrowser();
 
   for (const route of ROUTES) {
     const page = await browser.newPage();
