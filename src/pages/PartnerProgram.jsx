@@ -20,13 +20,13 @@ const steps = [
     number: '01',
     icon: <Share2 className="w-5 h-5" />,
     title: 'Share with your network',
-    description: 'Share the FDE hiring Google Form link through clubs, group chats, classrooms, social media, and word of mouth.',
+    description: (<>Share the FDE hiring <a href="https://airtable.com/appSZPPGxnW4I5YV1/pagWUx7jeZDjKshyN/form" target="_blank" rel="noopener noreferrer" className="underline text-nixo hover:text-nixo/80 transition-colors">form</a> through clubs, group chats, classrooms, social media, and word of mouth.</>),
   },
   {
     number: '02',
     icon: <Mail className="w-5 h-5" />,
     title: 'Email us your resume',
-    description: 'Send your resume to team@withnixo.com with the subject line "Fall 25 Campus Partner Program".',
+    description: 'Send your resume to team@withnixo.com with the subject line "Campus Partner Program".',
   },
   {
     number: '03',
@@ -64,7 +64,7 @@ export default function PartnerProgram() {
               The Nixo Partner Program empowers top students to become growth leaders for Nixo while earning real career rewards.
             </p>
             <motion.a
-              href="mailto:team@withnixo.com?subject=Fall%2025%20Campus%20Partner%20Program"
+              href="mailto:team@withnixo.com?subject=Campus%20Partner%20Program"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className="btn-primary text-base px-8 py-4 inline-flex"
@@ -213,10 +213,10 @@ export default function PartnerProgram() {
                 Ready to become a Nixo Partner?
               </h2>
               <p className="text-text-secondary mb-6">
-                Email your resume with subject "Fall 25 Campus Partner Program"
+                Email your resume with subject "Campus Partner Program"
               </p>
               <a
-                href="mailto:team@withnixo.com?subject=Fall%2025%20Campus%20Partner%20Program"
+                href="mailto:team@withnixo.com?subject=Campus%20Partner%20Program"
                 className="btn-primary inline-flex"
               >
                 <Mail className="w-4 h-4" />
