@@ -10,6 +10,7 @@ const FDEWiki = lazy(() => import('./pages/FDEWiki'));
 const ForCandidates = lazy(() => import('./pages/ForCandidates'));
 const PartnerProgram = lazy(() => import('./pages/PartnerProgram'));
 const ForEmployers = lazy(() => import('./pages/ForEmployers'));
+const SaaStr = lazy(() => import('./pages/SaaStr'));
 
 
 function ScrollHandler() {
@@ -68,6 +69,7 @@ export default function App() {
                 <Route path="/for-candidates" element={<ForCandidates />} />
                 <Route path="/partner-program" element={<PartnerProgram />} />
                 <Route path="/for-employers" element={<ForEmployers />} />
+                <Route path="/saastr" element={<SaaStr />} />
               </Routes>
             </Suspense>
           </main>
